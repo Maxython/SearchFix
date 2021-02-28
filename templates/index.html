@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/SearchFixLog.png') }}" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <header class="menu">
+      <div class="button-menu">
+        <ul>
+          <li>
+            <a href="/" class="button-true">Search</a>
+          </li>
+          <li>
+            <a href="/home" class="button-false">Home</a>
+          </li>
+          <li>
+            <a href="/help" class="button-false">Help</a>
+          </li>
+        </ul>
+      </div>
+      <!--<img src="{{ url_for('static', filename='img/SearchFix2.png') }}">-->
+    </header>
+    <span></span>
+  </body>
+</html>
