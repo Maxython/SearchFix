@@ -41,21 +41,29 @@ body {
   border-radius: 8px;
 }
 
-.button-false {
+.button-False {
   background-color: #211F30;
 }
 
-.button-false:hover {
+.button-False:hover {
   background-color: #E29930;
 }
 
-.button-true {
+.button-True {
   background-color: #217CA3;
   color: white;
 }
 
-.button-true:hover {
+.button-True:hover {
   color: white;
+}
+
+.logo {
+  float: left;
+}
+
+.logo div {
+  background-image: url(img/SearchFix2.png)
 }
 
 a {
