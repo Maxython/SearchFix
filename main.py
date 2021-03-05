@@ -18,5 +18,5 @@ app.run()
 
 #https://github.com/search?q={{ TEXT }}&type=issues  GitHub
 #https://stackoverflow.com/search?q={{ TEXT }}  StackOverflow
-#https://readthedocs.org/search/?q={{ TEXT }} Read The Docs
-#https://habr.com/ru/search/?q={{ TEXT }} Habr
+#https://readthedocs.org/projects/docs/search/?q={{ TEXT }}&project=docs Read The Docs
+#https://habr.com/en/search/?q={{ TEXT }} Habr
