@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Error
+{% endblock %}
+
+{% block content %}
+<div class='box black'>
+  <h1 class="display-3">Oops <span class="high">404</span> error...</h1>
+</div>
+<div class="row">
+  <div class="col">
+    <p style="text-align: center">
+      <img width="400px" title="Take a little break from mistakes :)" src="{{ url }}"/>
+    </p>
+  </div>
+  <div class="col-6">
+    <p>There are several ways to fix this error.</p>
+    <ul class="list-unstyled">
+      <li>1) Follow this <a href="/">link.</a></li>
+      <li>2) Click on the project logo.</li>
+      <li>3) Click on any button from the menu item.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

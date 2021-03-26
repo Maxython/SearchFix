@@ -1,5 +1,8 @@
 body {
   background: #211F30;
+  font-family: ClearSansRegular;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 @font-face {
@@ -13,37 +16,36 @@ body {
 }
 
 .menu {
+  overflow: hidden;
   background: #32384D;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.button-menu {
-  float: right;
-  padding: 8px;
+.but-menu {
+  padding: 0 8px;
 }
 
-.button-menu ul {
-  list-style-type: none;
-  margin: 0;
+.but-menu ul {
   padding: 30px 0;
-  overflow: hidden;
 }
 
-.button-menu ul li {
-  float: left;
-  padding: 0 5px;
+.but-menu ul li {
+  padding: 5px;
 }
 
-.button-menu ul li a {
+.but-menu ul li a.nav-link {
   display: block;
   padding: 5px 8px;
   border: 1px solid black;
   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .button-False {
-  background-color: #211F30;
+  background-color: black;
   transition: background-color 0.25s linear;
 }
 
@@ -62,11 +64,10 @@ body {
 
 .logo {
   float: left;
-  padding: 10px;
+  padding: 15px 10px 0;
 }
 
 a {
-  font-family: ClearSansRegular;
   color: #E29930;
   text-decoration: none;
 }
@@ -77,9 +78,86 @@ a:hover {
 
 h1 {
   color: #E29930;
+  font-family: ClearSansBold;
+  padding: 10px;
 }
 
 img {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+main {
+  padding: 130px 0 0;
+}
+
+.but-img {
+  width: 25px;
+  border-radius: 0;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.row {
+  padding: 20px 0;
+}
+
+.col {
+  padding: 10px;
+}
+
+.col-4 {
+  padding: 5px;
+}
+
+.img-err {
+  width: 400px;
+  padding: 20px 0;
+}
+
+.high {
+  font-family: ClearSansRegular;
+  color: #217CA3;
+}
+
+.box {
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.black {
+  background: #000000;
+}
+
+@media all and (max-width: 616px){
+  .buts-menu {
+    display: none;
+  }
+}
+
+@media all and (max-width: 430px){
+  img {
+    width: 300px;
+  }
+  .logo-img {
+    width: 120px;
+  }
+  .logo {
+    padding: 20px 10px 0;
+  }
+  .but-img {
+    width: 15px;
+  }
+  .but-menu ul {
+    padding: 15px;
+  }
+  main {
+    padding: 90px 0 0;
+  }
+}
+
+@media all and (min-width: 616px){
+  .url-menu {
+    display: none;
+  }
 }

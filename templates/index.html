@@ -2,32 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>
+      {% block title %}
+        Home page
+      {% endblock %}
+    </title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/SearchFixLog.png') }}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css', v=1) }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
-    <header class="menu">
+    <header class="container-fluid menu">
       <div class="logo">
-        <div>
-          <img src="{{ url_for('static', filename='img/SearchFix2.png') }}" width="220px">
-        </div>
+        <a href="/">
+          <img src="{{ url_for('static', filename='img/SearchFix2.png') }}" width="220px" class="logo-img">
+        </a>
       </div>
-      <div class="button-menu">
-        <ul>
-          <li>
-            <a href="/" class="button-{{ search }}">Search</a>
+      <div class="but-menu">
+        <ul class="nav justify-content-end">
+          {% block menu %}
+          <li class="nav-item buts-menu">
+            <a href="/" class="nav-link button-{% block search %}False{% endblock %}">Search</a>
           </li>
-          <li>
-            <a href="/home" class="button-{{ home }}">Home</a>
+          <li class="nav-item buts-menu">
+            <a href="/home" class="nav-link button-{% block home %}False{% endblock %}">Home</a>
           </li>
-          <li>
-            <a href="/help" class="button-{{ help }}">Help</a>
+          <li class="nav-item buts-menu">
+            <a href="/help" class="nav-link button-{% block help %}False{% endblock %}">Help</a>
+          </li>
+          <li class="nav-item url-menu">
+            <a class="nav-link button-False" href="/menu">
+              <img class="but-img" alt="menu" title="menu" src="{{ url_for('static', filename='img/menu.png') }}"/>
+            </a>
+          </li>
+          {% endblock %}
+          <li class="nav-item">
+            <a class="nav-link button-False" href="https://twitter.com/maxython">
+              <img class="but-img" alt="Twitter" title="site twitter" src="{{ url_for('static', filename='img/TwitterIcon.png') }}"/>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link button-False" href="https://github.com/Maxython/SearchFix">
+              <img class="but-img" alt="GitHub" title="site github" src="{{ url_for('static', filename='img/GitHubIcon.png') }}"/>
+            </a>
           </li>
         </ul>
       </div>
     </header>
+    <main class="container">
+      {% block content %}
+      {% endblock %}
+    </main>
   </body>
 </html>
