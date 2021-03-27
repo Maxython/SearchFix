@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from random import randint
 
 app = Flask(__name__)
@@ -16,9 +16,9 @@ def home():
 def help():
     return render_template('help.html')
 
-@app.route('/menu')
-def menu():
-    return render_template('menu.html')
+@app.route('/find/<find_text>')
+def find(find_text):
+    return render_template('find.html', title=find_text)
 
 @app.errorhandler(Exception)
 def error(error):

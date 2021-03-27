@@ -1,11 +1,125 @@
 {% extends 'index.html' %}
 
 {% block search %}True{% endblock %}
+{% block search2 %}True{% endblock %}
 
 {% block content %}
-<ul class="list-unstyled">
-  <li>
-
-  </li>
-</ul>
+<div style='padding: 15px 0'>
+  <div class="box black">
+    <h1>Time to <span class="high">fix</span> the error)</h1>
+  </div>
+</div>
+<p>
+  If you don't magically know what to do, visit this <a href="/help">site</a>.
+</p>
+<form>
+  <div class="input-group mb-3">
+    <input id="text-search" type="text" class="form-control" placeholder="Describe the error" aria-label="Describe the error" aria-describedby="basic-addon2">
+  </div>
+  <ul class="list-unstyled">
+    <li>Search settings:</li>
+    <li>
+      <div class="box black2">
+        <ul class="nav in-box">
+          <li class="nav-item">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="chGitHub" value="option1" onchange="github()" checked>
+              <label class="form-check-label" for="inlineCheckbox1">GitHub</label>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Number of comments</label>
+              <select class="form-control" id="selGitHub">
+                <option>null</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="box black2">
+        <ul class="nav in-box">
+          <li class="nav-item">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="chRTD" value="option1" onchange="rtd()" checked>
+              <label class="form-check-label" for="inlineCheckbox1">Read the Docs</label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="box black2">
+        <ul class="nav in-box">
+          <li class="nav-item">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="chHabr" value="option1" onchange="habr()" checked>
+              <label class="form-check-label" for="inlineCheckbox1">Habr</label>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Total</label>
+              <select class="form-control" id="selHabr">
+                <option>null</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="box black2">
+        <ul class="nav in-box">
+          <li class="nav-item">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="chHQNA" value="option1" onchange="hqna()" checked>
+              <label class="form-check-label" for="inlineCheckbox1">Habr qna</label>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Answer</label>
+              <select class="form-control" id="selHQNA1">
+                <option>true</option>
+                <option>false</option>
+              </select>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Quantity Answer</label>
+              <select class="form-control" id="selHQNA2">
+                <option>null</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <div style="text-align: center;">
+    <p style="font-size: 30px">
+      It's time to find the error)
+    </p>
+    <button type="button" class="btn btn-primary btn-lg btn-block button-False" onclick="find()">To find</button>
+  </div>
+</form>
 {% endblock %}
