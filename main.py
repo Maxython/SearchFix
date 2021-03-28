@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from random import randint
+from json import loads
+from parsing import search
 
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
@@ -18,7 +20,11 @@ def help():
 
 @app.route('/find/<find_text>')
 def find(find_text):
-    return render_template('find.html', title=find_text)
+    github = loads(request.args.get('github'))
+    rtd = loads(request.args.get('rtd'))
+    habr = loads(request.args.get('habr'))
+    hqna = loads(request.args.get('hqna'))
+    return render_template('find.html', title=find_text.replace('+', ' '))
 
 @app.errorhandler(Exception)
 def error(error):

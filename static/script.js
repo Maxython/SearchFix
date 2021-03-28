@@ -31,39 +31,22 @@ function hqna(){
 }
 
 function find(){
-  var ch1 = document.getElementById('chGitHub'),
-      ch2 = document.getElementById('chRTD'),
-      ch3 = document.getElementById('chHabr'),
-      ch4 = document.getElementById('chHQNA'),
-      inp = document.getElementById('text-search').value.replace(' ', '+');
+  var inp = document.getElementById('text-search').value.replace(' ', '+');
 
   if (inp == ''){
     alert('Hmm ... Correct the mistake without its description, stupid act.');
     return;
   }
 
-  if (ch1.checked || ch2.checked || ch3.checked || ch4.checked){
-    var url = `/find/${inp}?github=${ch1.checked}`;
-    if (ch1.checked){
-      var sel = document.getElementById('selGitHub');
-      url = url + `&comen=${sel.options[sel.selectedIndex].text}`;
-    }
+  var ch1 = document.getElementById('chGitHub').checked,
+      ch2 = document.getElementById('chRTD').checked,
+      ch3 = document.getElementById('chHabr').checked,
+      ch4 = document.getElementById('chHQNA').checked,
+      vari = ['null', '1', '2', '3', '4', '5'],
+      log = ['true', 'false'];
 
-    url = url + `&rtd=${ch2.checked}&habr=${ch3.checked}`;
-    if (ch3.checked){
-      var sel = document.getElementById('selHabr');
-      url = url + `&total=${sel.options[sel.selectedIndex].text}`;
-    }
-
-    url = url + `&hqna=${ch4.checked}`;
-    if (ch4.checked) {
-      var sel = document.getElementById('selHQNA1');
-      url = url + `&answer=${sel.options[sel.selectedIndex].text}`;
-      var sel = document.getElementById('selHQNA2');
-      url = url + `&quan=${sel.options[sel.selectedIndex].text}`;
-    }
-
-    window.location.href = url;
+  if (ch1 || ch2 || ch3 || ch4){
+    window.location.href = `/find/${inp}?github=${ch1}&number_of_comments=${vari[document.getElementById('selGitHub').selectedIndex]}&rtd=${ch2}&habr=${ch3}&total=${vari[document.getElementById('selHabr').selectedIndex]}&hqna=${ch4.checked}&answer=${log[document.getElementById('selHQNA1').selectedIndex]}&quantity_answer=${vari[document.getElementById('selHQNA2').selectedIndex]}`;
   }
   else {
     alert('Oops, no services included for troubleshooting (');

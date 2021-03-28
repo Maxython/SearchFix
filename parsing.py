@@ -92,6 +92,31 @@ class search:
             break
 
 
+    def all(self, github:bool=True, number_of_comments:Union[None, int]=None, rtd:bool=True, habr:bool=True, total:Union[None, int]=None, hqna:bool=True, answer:bool=False, quantity_answer:Union[None, int]=None) -> None:
+        a = {'github':{}, 'readthedocs':{}, 'habr':{}, 'habrqna':{}}
+        if github:
+            self.github(number_of_comments=number_of_comments)
+            a['github']['url'] = self.__url
+            a['github']['official_url'] = self.__official_url
+            a['github']['result'] = self.__result
+        if rtd:
+            self.readthedocs()
+            a['readthedocs']['url'] = self.__url
+            a['readthedocs']['official_url'] = self.__official_url
+            a['readthedocs']['result'] = self.__result
+        if habr:
+            self.habr(total=total)
+            a['habr']['url'] = self.__url
+            a['habr']['official_url'] = self.__official_url
+            a['habr']['result'] = self.__result
+        if hqna:
+            self.habrqna(answer=answer, quantity_answer=quantity_answer)
+            a['habrqna']['url'] = self.__url
+            a['habrqna']['official_url'] = self.__official_url
+            a['habrqna']['result'] = self.__result
+        self.__result = a
+
+
     @property
     def request(self) -> str:
         return f'{self.__request}'
