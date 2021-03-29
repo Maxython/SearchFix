@@ -1,32 +1,40 @@
 function github(){
-  var ch = document.getElementById('chGitHub');
+  var ch = document.getElementById('chGitHub'),
+      sel = document.getElementById('selGitHub');
   if (ch.checked) {
-    document.getElementById('selGitHub').disabled = false
+    sel.disabled = false;
   }
   else {
-    document.getElementById('selGitHub').disabled = true
+    sel.disabled = true;
+    sel.value = sel.options[0].text;
   }
 }
 
 function habr(){
-  var ch = document.getElementById('chHabr');
+  var ch = document.getElementById('chHabr'),
+      sel = document.getElementById('selHabr');
   if (ch.checked) {
-    document.getElementById('selHabr').disabled = false
+    sel.disabled = false;
   }
   else {
-    document.getElementById('selHabr').disabled = true
+    sel.disabled = true;
+    sel.value = sel.options[0].text;
   }
 }
 
 function hqna(){
-  var ch = document.getElementById('chHQNA');
+  var ch = document.getElementById('chHQNA'),
+      sel1 = document.getElementById('selHQNA1'),
+      sel2 = document.getElementById('selHQNA2');
   if (ch.checked) {
-    document.getElementById('selHQNA1').disabled = false
-    document.getElementById('selHQNA2').disabled = false
+    sel1.disabled = false;
+    sel2.disabled = false;
   }
   else {
-    document.getElementById('selHQNA1').disabled = true
-    document.getElementById('selHQNA2').disabled = true
+    sel1.disabled = true;
+    sel1.value = sel1.options[0].text;
+    sel2.disabled = true;
+    sel2.value = sel2.options[0].text;
   }
 }
 
@@ -46,7 +54,7 @@ function find(){
       log = ['true', 'false'];
 
   if (ch1 || ch2 || ch3 || ch4){
-    window.location.href = `/find/${inp}?github=${ch1}&number_of_comments=${vari[document.getElementById('selGitHub').selectedIndex]}&rtd=${ch2}&habr=${ch3}&total=${vari[document.getElementById('selHabr').selectedIndex]}&hqna=${ch4.checked}&answer=${log[document.getElementById('selHQNA1').selectedIndex]}&quantity_answer=${vari[document.getElementById('selHQNA2').selectedIndex]}`;
+    window.location.href = `find/${inp}?github=${ch1}&number_of_comments=${vari[document.getElementById('selGitHub').selectedIndex]}&rtd=${ch2}&habr=${ch3}&total=${vari[document.getElementById('selHabr').selectedIndex]}&hqna=${ch4}&answer=${log[document.getElementById('selHQNA1').selectedIndex]}&quantity_answer=${vari[document.getElementById('selHQNA2').selectedIndex]}`;
   }
   else {
     alert('Oops, no services included for troubleshooting (');

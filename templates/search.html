@@ -4,7 +4,7 @@
 {% block search2 %}True{% endblock %}
 
 {% block content %}
-<div style='padding: 15px 0'>
+<div style='padding: 5px 0'>
   <div class="box black">
     <h1>Time to <span class="high">fix</span> the error)</h1>
   </div>
@@ -12,9 +12,16 @@
 <p>
   If you don't magically know what to do, visit this <a href="/help">site</a>.
 </p>
-<form>
+<div>
   <div class="input-group mb-3">
-    <input id="text-search" type="text" class="form-control" placeholder="Describe the error" aria-label="Describe the error" aria-describedby="basic-addon2">
+    <input id="text-search" type="text" class="form-control" aria-label="Describe the error">
+    <script>
+      document.getElementById('text-search').addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          find();
+        }
+      });
+    </script>
   </div>
   <ul class="list-unstyled">
     <li>Search settings:</li>
@@ -121,5 +128,5 @@
     </p>
     <button type="button" class="btn btn-primary btn-lg btn-block button-False" onclick="find()">To find</button>
   </div>
-</form>
+</div>
 {% endblock %}

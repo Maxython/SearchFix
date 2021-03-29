@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from werkzeug.exceptions import HTTPException
 from random import randint
 from json import loads
 from parsing import search
@@ -18,17 +19,25 @@ def home():
 def help():
     return render_template('help.html')
 
-@app.route('/find/<find_text>')
+@app.route('/find/<find_text>/')
 def find(find_text):
-    github = loads(request.args.get('github'))
-    rtd = loads(request.args.get('rtd'))
-    habr = loads(request.args.get('habr'))
-    hqna = loads(request.args.get('hqna'))
-    return render_template('find.html', title=find_text.replace('+', ' '))
+    a = search(find_text)
+    a.all(github=loads(request.args.get('github')),
+    number_of_comments=loads(request.args.get('number_of_comments')),
+    rtd=loads(request.args.get('rtd')),
+    habr=loads(request.args.get('habr')),
+    total=loads(request.args.get('total')),
+    hqna=loads(request.args.get('hqna')),
+    answer=loads(request.args.get('answer')),
+    quantity_answer=loads(request.args.get('quantity_answer')))
+    return render_template('find.html', title=find_text.replace('+', ' '), result=a.result)
 
 @app.errorhandler(Exception)
 def error(error):
-    return render_template('error.html', url=f'/static/img/siba{randint(1, 4) if randint(1, 10) == 1 else randint(1, 3)}.jpg')
+    code = 500
+    if isinstance(error, HTTPException):
+        code = error.code
+    return render_template('error.html', error=code, url=f'/static/img/siba{randint(1, 4) if randint(1, 10) == 1 else randint(1, 3)}.jpg'), code
 
 app.run()
 
