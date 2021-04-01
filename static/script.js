@@ -10,6 +10,18 @@ function github(){
   }
 }
 
+function rtd(){
+  var ch = document.getElementById('chRTD'),
+      sel = document.getElementById('selRTD');
+  if (ch.checked) {
+    sel.disabled = false;
+  }
+  else {
+    sel.disabled = true;
+    sel.value = sel.options[0].text;
+  }
+}
+
 function habr(){
   var ch = document.getElementById('chHabr'),
       sel = document.getElementById('selHabr');
@@ -51,10 +63,11 @@ function find(){
       ch3 = document.getElementById('chHabr').checked,
       ch4 = document.getElementById('chHQNA').checked,
       vari = ['null', '1', '2', '3', '4', '5'],
-      log = ['true', 'false'];
+      log = ['true', 'false'],
+      quan = ['null', '5', '10', '20'];
 
   if (ch1 || ch2 || ch3 || ch4){
-    window.location.href = `find/${inp}?github=${ch1}&number_of_comments=${vari[document.getElementById('selGitHub').selectedIndex]}&rtd=${ch2}&habr=${ch3}&total=${vari[document.getElementById('selHabr').selectedIndex]}&hqna=${ch4}&answer=${log[document.getElementById('selHQNA1').selectedIndex]}&quantity_answer=${vari[document.getElementById('selHQNA2').selectedIndex]}`;
+    window.location.href = `find/${inp}?github=${ch1}&number_of_comments=${vari[document.getElementById('selGitHub').selectedIndex]}&rtd=${ch2}&quantity=${quan[document.getElementById('selRTD').selectedIndex]}&habr=${ch3}&total=${vari[document.getElementById('selHabr').selectedIndex]}&hqna=${ch4}&answer=${log[document.getElementById('selHQNA1').selectedIndex]}&quantity_answer=${vari[document.getElementById('selHQNA2').selectedIndex]}`;
   }
   else {
     alert('Oops, no services included for troubleshooting (');

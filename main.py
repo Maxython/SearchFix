@@ -25,6 +25,7 @@ def find(find_text):
     a.all(github=loads(request.args.get('github')),
     number_of_comments=loads(request.args.get('number_of_comments')),
     rtd=loads(request.args.get('rtd')),
+    quantity=loads(request.args.get('quantity')),
     habr=loads(request.args.get('habr')),
     total=loads(request.args.get('total')),
     hqna=loads(request.args.get('hqna')),

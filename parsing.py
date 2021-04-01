@@ -38,12 +38,12 @@ class search:
 
 
 
-    def readthedocs(self, quantity:Union[str, int]='all') -> None:
+    def readthedocs(self, quantity:Union[None, int]=None) -> None:
         self.__result.clear()
         self.__url = f'https://readthedocs.org/projects/docs/search/?q={self.__request}&project=docs'
         self.__official_url = 'https://readthedocs.org/'
         for i in bs(requests.get(self.__url).text, 'lxml').find_all('li', class_='module-item search-result-item'):
-            if quantity == 'all' or len(self.__result) != quantity:
+            if quantity == None or len(self.__result) != quantity:
                 b = {}
                 for j in i.find_all('a'):
                     b['main' if 'main' not in b else f'docs{len(b)}'] = {'title': ' '.join(j.text.replace('\n', '').split()), 'url': j.get('href')}
@@ -92,28 +92,28 @@ class search:
             break
 
 
-    def all(self, github:bool=True, number_of_comments:Union[None, int]=None, rtd:bool=True, habr:bool=True, total:Union[None, int]=None, hqna:bool=True, answer:bool=False, quantity_answer:Union[None, int]=None) -> None:
-        a = {'github':{}, 'readthedocs':{}, 'habr':{}, 'habrqna':{}}
+    def all(self, github:bool=True, number_of_comments:Union[None, int]=None, rtd:bool=True, quantity:Union[None, int]=None, habr:bool=True, total:Union[None, int]=None, hqna:bool=True, answer:bool=False, quantity_answer:Union[None, int]=None) -> None:
+        a = [{'act':github, 'title':'GitHub'}, {'act':rtd, 'title':'Read the Docs'}, {'act':habr, 'title':'Habr'}, {'act':hqna, 'title':'Habr qna'}]
         if github:
             self.github(number_of_comments=number_of_comments)
-            a['github']['url'] = self.__url
-            a['github']['official_url'] = self.__official_url
-            a['github']['result'] = self.__result
+            a[0]['url'] = self.url
+            a[0]['official_url'] = self.official_url
+            a[0]['result'] = self.result
         if rtd:
-            self.readthedocs()
-            a['readthedocs']['url'] = self.__url
-            a['readthedocs']['official_url'] = self.__official_url
-            a['readthedocs']['result'] = self.__result
+            self.readthedocs(quantity=quantity)
+            a[1]['url'] = self.url
+            a[1]['official_url'] = self.official_url
+            a[1]['result'] = self.result
         if habr:
             self.habr(total=total)
-            a['habr']['url'] = self.__url
-            a['habr']['official_url'] = self.__official_url
-            a['habr']['result'] = self.__result
+            a[2]['url'] = self.url
+            a[2]['official_url'] = self.official_url
+            a[2]['result'] = self.result
         if hqna:
             self.habrqna(answer=answer, quantity_answer=quantity_answer)
-            a['habrqna']['url'] = self.__url
-            a['habrqna']['official_url'] = self.__official_url
-            a['habrqna']['result'] = self.__result
+            a[3]['url'] = self.url
+            a[3]['official_url'] = self.official_url
+            a[3]['result'] = self.result
         self.__result = a
 
 

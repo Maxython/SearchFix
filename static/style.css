@@ -41,7 +41,6 @@ body {
 }
 
 .but-menu ul li a.nav-link {
-  display: block;
   padding: 5px 8px;
   border: 1px solid black;
   border-radius: 8px;
@@ -75,6 +74,7 @@ body {
 }
 
 a {
+  display: block;
   color: #E29930;
   text-decoration: none;
 }

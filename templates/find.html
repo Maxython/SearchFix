@@ -5,16 +5,39 @@
 {% endblock %}
 
 {% block content %}
-<p>
-  {{ result['github'] }}
-</p>
-<p>
-  {{ result['readthedocs'] }}
-</p>
-<p>
-  {{ result['habr'] }}
-</p>
-<p>
-  {{ result['habrqna'] }}
-</p>
+<ul class="list-unstyled">
+  {% for res in result %}
+    {% if res['act'] %}
+      <li>
+        <div class="box black2">
+          <ul class="nav in-box">
+            <li class="nav-item">
+              <h1><a href="{{ res['official_url'] }}">{{ res['title'] }}</a></h1>
+            </li>
+            <li class="nav-item">
+              <a href="{{ res['url'] }}">Link</a>
+            </li>
+          </ul>
+          <ul class="list-unstyled">
+            {% if res['result']|length != 0 %}
+              {% for con in res['result'] %}
+                <li>
+                  <div class="box black">
+                    <p>
+                      {{ con }}
+                    </p>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+              <div style="padding: 10px;">
+                <p>Nothing was found (</p>
+              </div>
+            {% endif %}
+          </ul>
+        </div>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
 {% endblock %}
