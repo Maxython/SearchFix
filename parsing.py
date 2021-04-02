@@ -25,15 +25,15 @@ class search:
             for i in g:
                 c = i.find('span', class_='mr-3')
                 if (number_of_comments == None or number_of_comments == 0) or ((int(c.text.replace('\n', '').split()[0]) >= number_of_comments) if c != None else False):
-                    b = {'comments':int(c.text.replace('\n', '').split()[0]) if c != None else c, 'user':{}, 'issue':{}}
+                    b = {'comments':int(c.text.replace('\n', '').split()[0]) if c != None else 0, 'user':{}, 'issue':{}}
                     for j in i.find_all('a'):
                         a = j.get('href')
                         if a.count('/') == 1:
                             b['user']['url'] = self.__official_url + a
-                            b['user']['url_title'] = j.text
+                            b['user']['title'] = j.text
                         elif 'issues/' in a or 'pull' in a:
                             b['issue']['url'] = self.__official_url + a
-                            b['issue']['url_title'] = j.text
+                            b['issue']['title'] = j.text
                     self.__result.append(b)
 
 
@@ -44,9 +44,13 @@ class search:
         self.__official_url = 'https://readthedocs.org/'
         for i in bs(requests.get(self.__url).text, 'lxml').find_all('li', class_='module-item search-result-item'):
             if quantity == None or len(self.__result) != quantity:
-                b = {}
+                b = {'docs': []}
                 for j in i.find_all('a'):
-                    b['main' if 'main' not in b else f'docs{len(b)}'] = {'title': ' '.join(j.text.replace('\n', '').split()), 'url': j.get('href')}
+                    c = {'title': ' '.join(j.text.replace('\n', '').split()), 'url': j.get('href')}
+                    if 'main' in b:
+                        b['docs'].append(c)
+                    else:         
+                        b['main'] = c
                 self.__result.append(b)
             else:
                 break

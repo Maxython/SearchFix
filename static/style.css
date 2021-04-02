@@ -41,6 +41,7 @@ body {
 }
 
 .but-menu ul li a.nav-link {
+  display: block;
   padding: 5px 8px;
   border: 1px solid black;
   border-radius: 8px;
@@ -74,7 +75,6 @@ body {
 }
 
 a {
-  display: block;
   color: #E29930;
   text-decoration: none;
 }
@@ -89,13 +89,23 @@ h1 {
   padding: 10px;
 }
 
+h3 {
+  color: #E29930;
+  font-family: ClearSansBold;
+  padding: 3px 5px;
+}
+
+span {
+  padding: 0 5px;
+}
+
 img {
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 main {
-  padding: 130px 0 0;
+  padding: 130px 0 20px;
 }
 
 input[type="text"] {

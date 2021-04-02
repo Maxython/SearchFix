@@ -24,7 +24,46 @@
                 <li>
                   <div class="box black">
                     <p>
-                      {{ con }}
+                      {% if res['title'] == 'GitHub' %}
+                        <h3><a href="{{ con['issue']['url'] }}">{{ con['issue']['title'] }}</a></h3>
+                        <ul class="nav in-box">
+                          <li class="nav-item">
+                            <span>User:</span><a href="{{ con['user']['url'] }}">{{ con['user']['title'] }}</a>
+                          </li>
+                          <li class="nav-item">
+                            <span style="padding: 0 5px;">Comments:</span>{{ con['comments'] }}
+                          </li>
+                        </ul>
+                      {% elif res['title'] == 'Read the Docs' %}
+                        <h3><a href="{{ con['main']['url'] }}">{{ con['main']['title'] }}</a></h3>
+                        <ul class="list-unstyled">
+                          <li>
+                            Docs:
+                          </li>
+                          {% for doc in con['docs'] %}
+                            <li>
+                              <a href="{{ doc['url'] }}">{{ doc['title'] }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% elif res['title'] == 'Habr' %}
+                        <h3><a href="{{ con['post']['url'] }}">{{ con['post']['title'] }}</a></h3>
+                        <ul class="nav in-box">
+                          <li class="nav-item">
+                            <span>Total: {{ con['total'] }}</span>
+                          </li>
+                          <li class="nav-item">
+                            <span>User:</span><a href="{{ con['user']['url'] }}">{{ con['user']['title'] }}</a>
+                          </li>
+                        </ul>
+                      {% else %}
+                        <h3><a href="{{ con['url'] }}">{{ con['title'] }}</a></h3>
+                        <ul class="nav in-box">
+                          <li class="nav-item">
+                            <span>Answer: {{ con['answer'] }}</span>
+                          </li>
+                        </ul>
+                      {% endif %}
                     </p>
                   </div>
                 </li>
@@ -40,4 +79,7 @@
     {% endif %}
   {% endfor %}
 </ul>
+<div class="box black">
+  <p>Can't fix it? Then follow this <a href="https://stackoverflow.com/search?q={{ find_text }}">link</a>.</p>
+</div>
 {% endblock %}

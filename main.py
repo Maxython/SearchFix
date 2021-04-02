@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from werkzeug.exceptions import HTTPException
 from random import randint
-from json import loads
+from json import loads, dumps
 from parsing import search
 
 app = Flask(__name__)
@@ -31,7 +31,25 @@ def find(find_text):
     hqna=loads(request.args.get('hqna')),
     answer=loads(request.args.get('answer')),
     quantity_answer=loads(request.args.get('quantity_answer')))
-    return render_template('find.html', title=find_text.replace('+', ' '), result=a.result)
+    return render_template('find.html', title=find_text.replace('+', ' '), find_text=find_text, result=a.result)
+
+@app.route('/api')
+def api():
+    return render_template('api.html')
+
+@app.route('/api/<find_text>/')
+def api_find(find_text):
+    a = search(find_text)
+    a.all(github=loads(request.args.get('github')),
+    number_of_comments=loads(request.args.get('number_of_comments')),
+    rtd=loads(request.args.get('rtd')),
+    quantity=loads(request.args.get('quantity')),
+    habr=loads(request.args.get('habr')),
+    total=loads(request.args.get('total')),
+    hqna=loads(request.args.get('hqna')),
+    answer=loads(request.args.get('answer')),
+    quantity_answer=loads(request.args.get('quantity_answer')))
+    return dumps(a.result)
 
 @app.errorhandler(Exception)
 def error(error):
