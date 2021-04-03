@@ -70,7 +70,8 @@ def error(error):
         code = error.code
     return render_template('error.html', error=code, url=f'/static/img/siba{randint(1, 4) if randint(1, 10) == 1 else randint(1, 3)}.jpg'), code
 
-app.run()
+if __name__ == '__main__':
+    app.run()
 
 #https://github.com/search?q={{ TEXT }}&type=issues  GitHub
 #https://stackoverflow.com/search?q={{ TEXT }}  StackOverflow
