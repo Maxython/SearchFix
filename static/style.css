@@ -233,6 +233,10 @@ input[type="checkbox"]:checked {
   color: #217CA3;
 }
 
+.center {
+  text-align: center;
+}
+
 @media all and (max-width: 624px){
   .buts-menu {
     display: none;

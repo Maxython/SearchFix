@@ -4,7 +4,11 @@
   {{ title }}
 {% endblock %}
 
+{% block search %}True{% endblock %}
+{% block search2 %}True{% endblock %}
+
 {% block content %}
+<h1>Result:</h1>
 <ul class="list-unstyled">
   {% for res in result %}
     {% if res['act'] %}
@@ -79,7 +83,7 @@
     {% endif %}
   {% endfor %}
 </ul>
-<div class="box black">
-  <p>Can't fix it? Then follow this <a href="https://stackoverflow.com/search?q={{ find_text }}">link</a>.</p>
+<div class="center">
+  <p style="font-size: 30px; ">Can't fix it? Then follow this <a href="https://stackoverflow.com/search?q={{ find_text }}">link</a>.</p>
 </div>
 {% endblock %}

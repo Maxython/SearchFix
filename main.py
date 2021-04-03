@@ -40,16 +40,28 @@ def api():
 @app.route('/api/<find_text>/')
 def api_find(find_text):
     a = search(find_text)
-    a.all(github=loads(request.args.get('github')),
-    number_of_comments=loads(request.args.get('number_of_comments')),
-    rtd=loads(request.args.get('rtd')),
-    quantity=loads(request.args.get('quantity')),
-    habr=loads(request.args.get('habr')),
-    total=loads(request.args.get('total')),
-    hqna=loads(request.args.get('hqna')),
-    answer=loads(request.args.get('answer')),
-    quantity_answer=loads(request.args.get('quantity_answer')))
-    return dumps(a.result)
+    github=request.args.get('github')
+    rtd=request.args.get('rtd')
+    habr=request.args.get('habr')
+    hqna=request.args.get('hqna')
+    answer=request.args.get('answer')
+    number_of_comments=request.args.get('number_of_comments')
+    quantity=request.args.get('quantity')
+    total=request.args.get('total')
+    quantity_answer=request.args.get('quantity_answer')
+    try:
+        a.all(github=loads(github if github != None else 'true'),
+        number_of_comments=loads(github if github != None else 'null'),
+        rtd=loads(rtd if rtd != None else 'true'),
+        quantity=loads(github if github != None else 'null'),
+        habr=loads(habr if habr != None else 'true'),
+        total=loads(github if github != None else 'null'),
+        hqna=loads(hqna if hqna != None else 'true'),
+        answer=loads(answer if answer != None else 'true'),
+        quantity_answer=loads(github if github != None else 'null'))
+        return dumps(a.result)
+    except TypeError:
+        return dumps({'error': 500})
 
 @app.errorhandler(Exception)
 def error(error):

@@ -5,8 +5,56 @@
 {% endblock %}
 
 {% block help %}True{% endblock %}
-
 {% block help2 %}True{% endblock %}
 
 {% block content %}
+<h1>Help!</h1>
+<div class="row">
+  <div class="col-6">
+    <p>If you somehow do not know how to look for fixing errors in the code, then this site is for you.</p>
+  </div>
+  <div class="col">
+    <p class="center">
+      <img width="400px" title="[Very important person]" src="{{ url_for('static', filename='/img/PrSiba1.jpg') }}"/>
+    </p>
+  </div>
+</div>
+<h1>Basic search rules:</h1>
+<ul class="list-unstyled">
+  <li>
+    <div class="box black">
+      <h3>1. Describe the error.</h3>
+      <p>
+        Write what type (kind) the error is, in what language and which function caused the error. You can also write an OS, but this is not necessary.
+      </p>
+    </div>
+  </li>
+  <li>
+    <div class="box black">
+      <h3>2. Don't write a CD!</h3>
+      <p>
+        First, each user has a different OS and therefore a CD. And so it turns out that the CD only interferes with the search. Second, the hacker will get the file and directory.
+      </p>
+    </div>
+  </li>
+  <li>
+    <div class="box black">
+      <h3>3. Big description doesn't mean good.</h3>
+      <p>
+        If you just stupidly copy the text of the error, then there is a chance that the error will not be detected. Therefore, it is better to follow the first point.
+      </p>
+    </div>
+  </li>
+  <li>
+    <div class="box black">
+      <h3>4. What, no bug fix was found?</h3>
+      <p>
+        If you could not find a fix for the error, then write about your error in the formulas. Not too late)
+      </p>
+    </div>
+  </li>
+</ul>
+<p class="center">
+  After reading, you can go to the <a href="/">main page</a>.
+</p>
 {% endblock %}

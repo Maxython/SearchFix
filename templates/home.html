@@ -8,4 +8,20 @@
 {% block home2 %}True{% endblock %}
 
 {% block content %}
+<div class="center">
+  <h1>Welcome to SearchFix!</h1>
+  <snap>Search engine for programmers.</snap>
+</div>
+<div class="row">
+  <div class="col-6">
+    <p>This place will help you fix your mistake in any programming language. If, of course, you know how to search). If not, then look at this <a href="/help">wanderer</a>.</p>
+    <p>If you can, here is the <a href='/'>link</a>.</p>
+    <h3>What it is?</h3>
+    <p>A parsing service that pulls information from GitHub, Read the Docs, Habr and Habr qna.</p>
+  </div>
+  <div class="col">
+    <p class="center">
+      <img width="400px" title="Yes, this is Shiba Inu)" src="{{ url_for('static', filename='img/SearchFix.png') }}"/>
+    </p>
+  </div>
 {% endblock %}
